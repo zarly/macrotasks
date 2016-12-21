@@ -21,11 +21,12 @@ MacrotaskCmd.prototype.run = function (params, timeout) {
     if (this.verbose) console.log('cmd = ', cmd);
 
     var promise = new Promise(function (resolve, reject) {
-        setTimeout(function onTimeoutError () {
+        var tid = setTimeout(function onTimeoutError () {
             reject(new Error('Timeout exception'));
         }, timeout);
 
         childProcess.exec(cmd, function (error, stdout, stderr) {
+            clearTimeout(tid);
             if (error) {
                 reject(error, stderr);
             }
