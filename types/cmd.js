@@ -4,9 +4,10 @@ var childProcess = require('child_process');
 
 function MacrotaskCmd (options) {
     options = options || {};
+    this.verbose = options.verbose || false;
     this.timeout = options.timeout || 300000;
     this.cmd = options.cmd;
-    this.verbose = options.verbose || false;
+    this.cwd = options.cwd;
 }
 
 /**
@@ -18,7 +19,12 @@ MacrotaskCmd.prototype.run = function (params, timeout) {
     params = params || [];
     timeout = timeout || this.timeout;
     var cmd = [].concat([this.cmd], params).join(' ');
-    if (this.verbose) console.log('cmd = ', cmd);
+    if (this.cwd) {
+        cmd = 'cd ' + this.cwd + ' && ' + cmd;
+    }
+    if (this.verbose) {
+        console.log('cmd = %s', cmd);
+    }
 
     var promise = new Promise(function (resolve, reject) {
         var tid = setTimeout(function onTimeoutError () {
