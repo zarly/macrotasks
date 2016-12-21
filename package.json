@@ -1,6 +1,6 @@
 {
   "name": "macrotasks",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Tool for running external tools as simple javascript functions",
   "main": "index.js",
   "scripts": {
