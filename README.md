@@ -9,14 +9,14 @@ var macrotasks = require('macrotasks');
 
 var ns = new macrotasks.Namespace();
 
-ns.defineTask('pwd', {
-    timeout: 10000,
-    type: 'cmd',
-    cmd: 'ls -alh',
-    cwd: '..'
+ns.defineTask('myTaskName', {
+    timeout: 10000, // timeout in milliseconds, default is 5 min (300000)
+    type: 'cmd',    // execute shell commend on local machine
+    cmd: 'ls -alh', // shell command
+    cwd: '..'       // current working directory for executing command
 });
 
-ns.runTask('pwd').then(function (res) {
+ns.runTask('myTaskName').then(function (res) {
     console.log('Success:', res);
 }).catch(function (err) {
     console.log('Error:', err);
