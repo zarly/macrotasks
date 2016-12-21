@@ -4,7 +4,7 @@ Tool for running external tools as simple javascript functions.
 
 ## Usage example #1
 
-```
+```javascript
 var macrotasks = require('macrotasks');
 
 var ns = new macrotasks.Namespace();
@@ -25,7 +25,7 @@ ns.runTask('myTaskName').then(function (res) {
 
 ## Usage example #2
 
-```
+```javascript
 var macrotasks = require('macrotasks');
 
 var ns = new macrotasks.Namespace();
